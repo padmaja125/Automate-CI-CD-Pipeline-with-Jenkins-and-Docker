@@ -18,7 +18,14 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/padmaja125/spring-docker-jenkins-ec2.git'
             }
         }
-
+    stage('Build') {
+        steps {
+            script {
+                def filePath = pwd()
+                filePath.readFrom('file.txt') // Example read operation
+            }
+        }
+    }
         stage('Build Application') {
             steps {
                 // Build the Spring Boot application
