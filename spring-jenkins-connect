@@ -1,5 +1,10 @@
 pipeline {
-    agent any
+        agent {
+        docker {
+            image 'maven:3.8.1-openjdk-11' // Maven with JDK 11 (or any version you need)
+            args '-v /var/run/docker.sock:/var/run/docker.sock' // Bind mount Docker socket to run Docker commands inside container
+        }
+    }
 
     environment {
         DOCKER_CREDENTIALS_ID = 'docker-hub-credentials' // Replace with your Docker credentials ID
